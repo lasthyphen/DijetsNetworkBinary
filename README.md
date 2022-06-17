@@ -104,10 +104,10 @@ To check the built image, run:
 docker image ls
 ```
 
-The image should be tagged as `avaplatform/avalanchego:xxxxxxxx`, where `xxxxxxxx` is the shortened commit of the Avalanche source it was built from. To run the avalanche node, run:
+The image should be tagged as `hyphenesc/binary:xxxxxxxx`, where `xxxxxxxx` is the shortened commit of the Avalanche source it was built from. To run the avalanche node, run:
 
 ```sh
-docker run -ti -p 9650:9650 -p 9651:9651 avaplatform/avalanchego:xxxxxxxx /avalanchego/build/avalanchego
+docker run -ti -p 9650:9650 -p 9651:9651 hyphenesc/binary:xxxxxxxx /avalanchego/build/avalanchego
 ```
 
 ## Running Avalanche

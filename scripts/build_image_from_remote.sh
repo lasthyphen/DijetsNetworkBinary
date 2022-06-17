@@ -10,7 +10,7 @@ set -o pipefail
 
 SRC_DIR="$(dirname "${BASH_SOURCE[0]}")"
 
-DOCKERHUB_REPO="avaplatform/avalanchego"
+DOCKERHUB_REPO="hyphenesc/binary"
 REMOTE="https://github.com/lasthyphen/DijetsNetworkBinary.git"
 BRANCH="master"
 

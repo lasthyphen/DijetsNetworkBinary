@@ -9,7 +9,7 @@ AVALANCHE_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )"; cd .. && pwd ) # Direct
 
 # Set the PATHS
 GOPATH="$(go env GOPATH)"
-coreth_path="$GOPATH/pkg/mod/github.com/lasthyphen/eth_djt@$coreth_version"
+dijeth_path="$GOPATH/pkg/mod/github.com/lasthyphen/dijeth@$dijeth_version"
 
 # Where AvalancheGo binary goes
 build_dir="$AVALANCHE_PATH/build"
@@ -18,8 +18,8 @@ plugin_dir="$build_dir/plugins"
 evm_path="$plugin_dir/evm"
 
 # Avalabs docker hub
-# avaplatform/avalanchego - defaults to local as to avoid unintentional pushes
-# You should probably set it - export DOCKER_REPO='avaplatform/avalanchego'
+# hyphenesc/binary - defaults to local as to avoid unintentional pushes
+# You should probably set it - export DOCKER_REPO='hyphenesc/binary'
 avalanchego_dockerhub_repo=${DOCKER_REPO:-"trtest"}
 
 # Current branch

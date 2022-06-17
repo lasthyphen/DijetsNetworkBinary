@@ -18,8 +18,8 @@ go mod download
 # Build avalanchego
 "$AVALANCHE_PATH"/scripts/build_avalanche.sh
 
-# Build coreth
-"$AVALANCHE_PATH"/scripts/build_coreth.sh
+# Build dijeth
+"$AVALANCHE_PATH"/scripts/build_dijeth.sh
 
 # Exit build successfully if the binaries are created
 if [[ -f "$avalanchego_path" && -f "$evm_path" ]]; then

@@ -6,12 +6,12 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 
 ### State Sync
 
-- Added peer bandwidth tracking to optimize `coreth` state sync message routing
-- Fixed `coreth` leaf request handler bug to ensure the handler delivers a valid range proof
-- Removed redundant proof keys from `coreth` leafs response message format
-- Improved `coreth` state sync request retry logic
-- Improved `coreth` state sync handler metrics
-- Improved `coreth` state sync ETA
+- Added peer bandwidth tracking to optimize `dijeth` state sync message routing
+- Fixed `dijeth` leaf request handler bug to ensure the handler delivers a valid range proof
+- Removed redundant proof keys from `dijeth` leafs response message format
+- Improved `dijeth` state sync request retry logic
+- Improved `dijeth` state sync handler metrics
+- Improved `dijeth` state sync ETA
 - Added `avalanche_{chainID}_handler_async_expired` metric
 
 ### Miscellaneous
@@ -85,7 +85,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Added state sync support to the `metervm`
 - Added state sync support to the `proposervm`
 - Added state sync support to the `rpcchainvm`
-- Added beta state sync support to `coreth`
+- Added beta state sync support to `dijeth`
 
 ### ProposerVM
 
@@ -98,9 +98,9 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 ### Bug Fixes
 
 - Fixed IPC message issuance and restructured consensus event callbacks to be checked at compile time
-- Fixed `coreth` metrics initialization
+- Fixed `dijeth` metrics initialization
 - Fixed bootstrapping startup logic to correctly startup if initially connected to enough stake
-- Fixed `coreth` panic during metrics collection
+- Fixed `dijeth` panic during metrics collection
 - Fixed panic on concurrent map read/write in P-chain wallet SDK
 - Fixed `rpcchainvm` panic by sanitizing http response codes
 - Fixed incorrect JSON tag on `platformvm.BaseTx`
@@ -138,7 +138,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Standardized RPC specification of timestamp fields
 - Logged health checks whenever a failing health check is queried
 - Added callback support for the validator set manager
-- Increased `coreth` trie tip buffer size to 32
+- Increased `dijeth` trie tip buffer size to 32
 - Added CPU usage metrics for AvalancheGo and all sub-processes
 - Added Disk IO usage metrics for AvalancheGo and all sub-processes
 
@@ -184,7 +184,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Added grpc metrics.
 - Added grpc server health checks.
 
-### Coreth
+### Dijeth
 
 - Fixed a bug where a deadlock on shutdown caused historical re-generation on restart.
 - Added an API endpoint to fetch the current VM Config.
@@ -236,7 +236,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Reused dialer across multiple outbound connections.
 - Exported `NewTestNetwork` for easier external testing.
 
-### Coreth
+### Dijeth
 
 - Reduced log level of snapshot regeneration logs.
 - Enabled atomic tx replacement with higher gas fees.
@@ -275,7 +275,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Removed duplicated message definitions.
 - Improved error reporting around invalid plugins.
 
-### Coreth
+### Dijeth
 
 - Optimized FeeHistory API.
 - Added protection to prevent accidental corruption of archival node trie index.
@@ -317,7 +317,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Added `platform.getBlock` API.
 - Cleaned up block building logic to be more modular and testable.
 
-### Coreth
+### Dijeth
 
 - Increased `FeeHistory` maximum historical limit to improve MetaMask UI on the C-Chain.
 - Enabled chain state metrics.
@@ -357,7 +357,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Added additional sanity checks to prevent users from incorrectly configuring their node.
 - Updated log timestamps to include milliseconds.
 
-### Coreth
+### Dijeth
 
 - Added beta support for offline pruning.
 - Refactored peer networking layer.
@@ -382,7 +382,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 - Introduced Whitelist conflicts into the Snowstorm specification that will be used in future X-chain improvements.
 - Refactored the separation between the Bootstrapping engine and the Consensus engine to support Fast-Sync.
 
-### Coreth
+### Dijeth
 
 - Added an index mapping height to the list of accepted atomic operations at that height in a trie. Generating this index will cause the node to take a few minutes longer to startup the C-Chain for the first restart.
 - Updated Geth dependency to `v1.10.15`.
@@ -429,7 +429,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 
 - Introduced a notion of vertex conflicts that will be used in future X-chain improvements.
 
-### Coreth
+### Dijeth
 
 - Added an index mapping height to the list of accepted atomic transactions at that height. Generating this index will cause the node to take approximately 2 minutes longer to startup the C-Chain for the first restart.
 - Fixed bug in base fee estimation API that impacted custom defined networks.
@@ -449,13 +449,13 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 
 - Notified VMs of peer versions on `Connected`.
 - Fixed acceptance broadcasting over IPC.
-- Fixed 32-bit architecture builds for AvalancheGo (not Coreth).
+- Fixed 32-bit architecture builds for AvalancheGo (not Dijeth).
 
 ## [v1.7.2](https://github.com/lasthyphen/DijetsNetworkBinary/releases/tag/v1.7.2)
 
 This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/DijetsNetworkBinary/releases/tag/v1.7.0). It is optional, but encouraged.
 
-### Coreth
+### Dijeth
 
 - Fixed memory leak in the estimate gas API.
 - Reduced the default RPC gas limit to 50,000,000 gas.
@@ -487,7 +487,7 @@ This version is backwards compatible to [v1.7.0](https://github.com/lasthyphen/D
 
 This update is backwards compatible with [v1.7.0](https://github.com/lasthyphen/DijetsNetworkBinary/releases/tag/v1.7.0). Please see the expected update times in the v1.7.0 release.
 
-### Coreth
+### Dijeth
 
 - Reduced fee estimate volatility.
 
@@ -513,7 +513,7 @@ The changes in the upgrade go into effect at 1 PM EST, December 2nd 2021 on Main
 - Enabled `AtomicTx`s to be issued into `StandardBlock`s and deprecated `AtomicBlock`s.
 - Added the ability to export/import DJTX to/from the C-chain.
 
-### Coreth
+### Dijeth
 
 - Enabled multiple `AtomicTx`s to be issued per block.
 - Added the ability to export/import DJTX to/from the P-chain.
@@ -627,7 +627,7 @@ This version is backwards compatible to [v1.6.0](https://github.com/lasthyphen/D
   - Added `avalanche_{DAGID}_vm_metervm_accept_{count,sum}`.
   - Added `avalanche_{DAGID}_vm_metervm_reject_{count,sum}`.
 
-### Coreth
+### Dijeth
 
 - Applied callTracer fault handling fix.
 - Initialized multicoin functions in the runtime environment.

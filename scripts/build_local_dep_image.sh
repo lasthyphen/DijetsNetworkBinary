@@ -4,10 +4,10 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-echo "Building docker image based off of most recent local commits of avalanchego and coreth"
+echo "Building docker image based off of most recent local commits of avalanchego and dijeth"
 
 AVALANCHE_REMOTE="git@github.com:lasthyphen/DijetsNetworkBinary.git"
-CORETH_REMOTE="git@github.com:lasthyphen/eth_djt.git"
+DIJETH_REMOTE="git@github.com:lasthyphen/dijeth.git"
 DOCKERHUB_REPO="hyphenesc/trtest"
 
 DOCKER="${DOCKER:-docker}"
@@ -22,7 +22,7 @@ WORKPREFIX="$GOPATH/src/github.com/lasthyphen"
 
 # Clone the remotes and checkout the desired branch/commits
 AVALANCHE_CLONE="$WORKPREFIX/DijetsNetworkBinary"
-CORETH_CLONE="$WORKPREFIX/eth_djt"
+DIJETH_CLONE="$WORKPREFIX/eth_djt"
 
 # Replace the WORKPREFIX directory
 rm -rf "$WORKPREFIX"
@@ -30,16 +30,16 @@ mkdir -p "$WORKPREFIX"
 
 
 AVALANCHE_COMMIT_HASH="$(git -C "$EXISTING_GOPATH/$AVA_LABS_RELATIVE_PATH/avalanchego" rev-parse --short HEAD)"
-CORETH_COMMIT_HASH="$(git -C "$EXISTING_GOPATH/$AVA_LABS_RELATIVE_PATH/coreth" rev-parse --short HEAD)"
+DIJETH_COMMIT_HASH="$(git -C "$EXISTING_GOPATH/$AVA_LABS_RELATIVE_PATH/dijeth" rev-parse --short HEAD)"
 
 git config --global credential.helper cache
 
 git clone "$AVALANCHE_REMOTE" "$AVALANCHE_CLONE"
 git -C "$AVALANCHE_CLONE" checkout "$AVALANCHE_COMMIT_HASH"
 
-git clone "$CORETH_REMOTE" "$CORETH_CLONE"
-git -C "$CORETH_CLONE" checkout "$CORETH_COMMIT_HASH"
+git clone "$DIJETH_REMOTE" "$DIJETH_CLONE"
+git -C "$DIJETH_CLONE" checkout "$DIJETH_COMMIT_HASH"
 
-CONCATENATED_HASHES="$AVALANCHE_COMMIT_HASH-$CORETH_COMMIT_HASH"
+CONCATENATED_HASHES="$AVALANCHE_COMMIT_HASH-$DIJETH_COMMIT_HASH"
 
 "$DOCKER" build -t "$DOCKERHUB_REPO:$CONCATENATED_HASHES" "$WORKPREFIX" -f "$SCRIPT_DIRPATH/local.Dockerfile"

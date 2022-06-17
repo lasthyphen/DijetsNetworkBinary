@@ -1,3 +1,4 @@
+
 #!/usr/bin/env ansible-playbook
 ---
 - name: Update the network
@@ -6,6 +7,5 @@
   roles:
     - name: avalanche_stop
     - name: avalanche_build
-    - name: coreth_build
-    - name: avalanche_reset
+    - name: dijeth_build
     - name: avalanche_start

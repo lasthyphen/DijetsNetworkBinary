@@ -1,4 +1,4 @@
-// Copyright (C) 2019-2021, Ava Labs, Inc. All rights reserved.
+// Copyright (C) 2019-2021, Dijets Inc, All rights reserved.
 // See the file LICENSE for licensing terms.
 
 package node
@@ -20,7 +20,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	coreth "github.com/lasthyphen/eth_djt/plugin/evm"
+	dijeth "github.com/lasthyphen/dijeth/plugin/evm"
 
 	"github.com/lasthyphen/DijetsNetworkBinary/api/admin"
 	"github.com/lasthyphen/DijetsNetworkBinary/api/auth"
@@ -758,7 +758,7 @@ func (n *Node) initVMs() error {
 			TxFee:            n.Config.TxFee,
 			CreateAssetTxFee: n.Config.CreateAssetTxFee,
 		}),
-		vmRegisterer.Register(constants.EVMID, &coreth.Factory{}),
+		vmRegisterer.Register(constants.EVMID, &dijeth.Factory{}),
 		n.Config.VMManager.RegisterFactory(secp256k1fx.ID, &secp256k1fx.Factory{}),
 		n.Config.VMManager.RegisterFactory(nftfx.ID, &nftfx.Factory{}),
 		n.Config.VMManager.RegisterFactory(propertyfx.ID, &propertyfx.Factory{}),
